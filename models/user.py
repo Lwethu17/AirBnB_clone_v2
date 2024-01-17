@@ -1,27 +1,11 @@
-#!/usr/bin/python3
-"""Defines a user class"""
-from sqlalchemy.ext.declarative import declarative_base
-from models.base_model import BaseModel, Base
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.orm import relationship
-from models.place import Place
-from models.review import Review
+#!/use/bin/python3
+"""This defines is the first user class the inherits from BaseModel"""
+from models.base_model import BaseModel
 
 
-class User(BaseModel, Base):
-    """This is the class for user
-    Attributes:
-        email: valid email address
-        password: password for your login details
-        first_name: first name
-        last_name: last name    
-    """
-    __tablename__ = "users"
-    email = Column(String(128), nullable=False)
-    password = Column(String(128), nullable=False)
-    first_name = Column(String(128))
-    last_name = Column(String(128))
-    places = relationship("Place", cascade='all, delete, delete-orphan',
-                          backref="user")
-    reviews = relationship("Review", cascade='all, delete, delete-orphan',
-                           backref="user")
+class User(BaseModel):
+    """A user class the inherits from BaseModel"""
+    email = ""
+    password = ""
+    first_name = ""
+    last_name = ""
